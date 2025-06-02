@@ -43,10 +43,6 @@ import { FormdataModule } from './modules/formdata/formdata.module';
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    {
-      provide: LocationStrategy,
-      useClass: PathLocationStrategy
-    },
   ],
   bootstrap: [AppComponent]
 })

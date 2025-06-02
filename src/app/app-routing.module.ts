@@ -29,6 +29,6 @@ export const Approutes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/form/workaway'
+    redirectTo: 'form/workaway'
   }
 ];
