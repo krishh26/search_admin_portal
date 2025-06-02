@@ -1,0 +1,228 @@
+<div class="form-details-container">
+  <div class="card">
+    <div class="card-header">
+      <h2>Details</h2>
+    </div>
+    <!-- WorkAway -->
+    <div *ngIf="formData?.formType == 'workAwayForm'" class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Service Type:</label>
+            <span>{{formData?.formData?.serviceType}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Profession Type:</label>
+            <span>{{formData?.formData?.professionType}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Business Name:</label>
+            <span>{{formData?.formData?.businessName}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Banking Option:</label>
+            <span>{{formData?.formData?.bankingOption}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="detail-item">
+            <label>Address:</label>
+            <span>{{formData?.formData?.address}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>White Label Option:</label>
+            <span>{{formData?.formData?.whiteLabelOption ? 'Yes' : 'No'}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Demand Ready:</label>
+            <span>{{formData?.formData?.hasDemandReady ? 'Yes' : 'No'}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Full Name:</label>
+            <span>{{formData?.formData?.fullName}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Job Title:</label>
+            <span>{{formData?.formData?.jobTitle}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Phone Number:</label>
+            <span>{{formData?.formData?.phoneNumber}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Email Address:</label>
+            <span>{{formData?.formData?.emailAddress}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>How did you hear about us:</label>
+            <span>{{formData?.formData?.howDidYouHear}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Step One Timestamp:</label>
+            <span>{{formData?.formData?.stepOneTimestamp | date:'medium'}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Completed Timestamp:</label>
+            <span>{{formData?.formData?.completedTimestamp | date:'medium'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--  -->
+    <!-- <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Service Type:</label>
+            <span>{{formData?.formData?.serviceType}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Profession Type:</label>
+            <span>{{formData?.formData?.professionType}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Business Name:</label>
+            <span>{{formData?.formData?.businessName}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Banking Option:</label>
+            <span>{{formData?.formData?.bankingOption}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="detail-item">
+            <label>Address:</label>
+            <span>{{formData?.formData?.address}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>White Label Option:</label>
+            <span>{{formData?.formData?.whiteLabelOption ? 'Yes' : 'No'}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Demand Ready:</label>
+            <span>{{formData?.formData?.hasDemandReady ? 'Yes' : 'No'}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Full Name:</label>
+            <span>{{formData?.formData?.fullName}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Job Title:</label>
+            <span>{{formData?.formData?.jobTitle}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Phone Number:</label>
+            <span>{{formData?.formData?.phoneNumber}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Email Address:</label>
+            <span>{{formData?.formData?.emailAddress}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>How did you hear about us:</label>
+            <span>{{formData?.formData?.howDidYouHear}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Step One Timestamp:</label>
+            <span>{{formData?.formData?.stepOneTimestamp | date:'medium'}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Completed Timestamp:</label>
+            <span>{{formData?.formData?.completedTimestamp | date:'medium'}}</span>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>

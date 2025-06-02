@@ -1,25 +1,50 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  CommonModule, LocationStrategy,
+  PathLocationStrategy
+} from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { Routes, RouterModule } from '@angular/router';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { FullComponent } from './layouts/full/full.component';
+
+
+import { NavigationComponent } from './shared/header/navigation.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+
+import { Approutes } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { APIInterceptor } from './utils/interceptor/ApiInterceptor';
+import { SpinnerComponent } from './shared/spinner.component';
+import { FormdataModule } from './modules/formdata/formdata.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SpinnerComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgbModule,
+    FormdataModule,
+    RouterModule.forRoot(Approutes, { useHash: false }),
+    FullComponent,
+    NavigationComponent,
+    SidebarComponent,
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
     {
-      provide: HTTP_INTERCEPTORS,
-      useClass: APIInterceptor,
-      multi: true
+      provide: LocationStrategy,
+      useClass: PathLocationStrategy
     },
   ],
   bootstrap: [AppComponent]
