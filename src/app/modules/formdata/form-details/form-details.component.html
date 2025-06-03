@@ -114,43 +114,19 @@
       </div>
     </div>
 
-    <!--  -->
-    <!-- <div class="card-body">
+    <!-- IT SubContract -->
+    <div *ngIf="formData?.formType == 'itSubcontractForm'" class="card-body">
       <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Service Type:</label>
-            <span>{{formData?.formData?.serviceType}}</span>
-          </div>
-        </div>
         <div class="col-md-6">
           <div class="detail-item">
             <label>Profession Type:</label>
             <span>{{formData?.formData?.professionType}}</span>
           </div>
         </div>
-      </div>
-
-      <div class="row">
         <div class="col-md-6">
           <div class="detail-item">
-            <label>Business Name:</label>
-            <span>{{formData?.formData?.businessName}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Banking Option:</label>
-            <span>{{formData?.formData?.bankingOption}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="detail-item">
-            <label>Address:</label>
-            <span>{{formData?.formData?.address}}</span>
+            <label>Registration Type:</label>
+            <span>{{formData?.formData?.registrationType}}</span>
           </div>
         </div>
       </div>
@@ -165,7 +141,76 @@
         <div class="col-md-6">
           <div class="detail-item">
             <label>Demand Ready:</label>
-            <span>{{formData?.formData?.hasDemandReady ? 'Yes' : 'No'}}</span>
+            <span>{{formData?.formData?.hasDemandReady}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Requirement:</label>
+            <span>{{formData?.formData?.requirement}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Engagement Type:</label>
+            <span>{{formData?.formData?.engagementType}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="detail-item">
+            <label>Description:</label>
+            <span>{{formData?.formData?.description}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Language:</label>
+            <span>{{formData?.formData?.language}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Budget:</label>
+            <span>{{formData?.formData?.budget}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Start Date:</label>
+            <span>{{formData?.formData?.startDate | date:'medium'}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>End Date:</label>
+            <span>{{formData?.formData?.endDate | date:'medium'}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Business Name:</label>
+            <span>{{formData?.formData?.businessName}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Address:</label>
+            <span>{{formData?.formData?.address}}</span>
           </div>
         </div>
       </div>
@@ -194,8 +239,8 @@
         </div>
         <div class="col-md-6">
           <div class="detail-item">
-            <label>Email Address:</label>
-            <span>{{formData?.formData?.emailAddress}}</span>
+            <label>Email:</label>
+            <span>{{formData?.formData?.email}}</span>
           </div>
         </div>
       </div>
@@ -204,25 +249,11 @@
         <div class="col-md-6">
           <div class="detail-item">
             <label>How did you hear about us:</label>
-            <span>{{formData?.formData?.howDidYouHear}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Step One Timestamp:</label>
-            <span>{{formData?.formData?.stepOneTimestamp | date:'medium'}}</span>
+            <span>{{formData?.formData?.hearAboutUs}}</span>
           </div>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Completed Timestamp:</label>
-            <span>{{formData?.formData?.completedTimestamp | date:'medium'}}</span>
-          </div>
-        </div>
-      </div>
-    </div> -->
+    </div>
+    
   </div>
 </div>
