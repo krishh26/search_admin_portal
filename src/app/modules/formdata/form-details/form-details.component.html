@@ -254,6 +254,213 @@
         </div>
       </div>
     </div>
-    
+
+    <!-- Contact Us -->
+    <div *ngIf="formData?.formType == 'contactUsForm'" class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Name:</label>
+            <span>{{formData?.formData?.name}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Email:</label>
+            <span>{{formData?.formData?.email}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Mobile Number:</label>
+            <span>{{formData?.formData?.mobileNumber}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Company Name:</label>
+            <span>{{formData?.formData?.companyName}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Website URL:</label>
+            <span>{{formData?.formData?.websiteUrl}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Role:</label>
+            <span>{{formData?.formData?.role}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Reason for Contact:</label>
+            <span>{{formData?.formData?.reasonForContact}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="detail-item">
+            <label>Message:</label>
+            <span>{{formData?.formData?.message}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- E2E QA Service -->
+    <div *ngIf="formData?.formType == 'e2eQaServiceForm'" class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Profession Type:</label>
+            <span>{{formData?.formData?.professionType}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Registration Type:</label>
+            <span>{{formData?.formData?.registrationType}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>White Label Option:</label>
+            <span>{{formData?.formData?.whiteLabelOption ? 'Yes' : 'No'}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Demand Ready:</label>
+            <span>{{formData?.formData?.hasDemandReady}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Requirement:</label>
+            <span>{{formData?.formData?.requirement}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Engagement Type:</label>
+            <span>{{formData?.formData?.engagementType}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="detail-item">
+            <label>Description:</label>
+            <span>{{formData?.formData?.description}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Language:</label>
+            <span>{{formData?.formData?.language}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Budget:</label>
+            <span>{{formData?.formData?.budget}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Start Date:</label>
+            <span>{{formData?.formData?.startDate | date:'medium'}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>End Date:</label>
+            <span>{{formData?.formData?.endDate | date:'medium'}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Business Name:</label>
+            <span>{{formData?.formData?.businessName}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Address:</label>
+            <span>{{formData?.formData?.address}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Full Name:</label>
+            <span>{{formData?.formData?.fullName}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Job Title:</label>
+            <span>{{formData?.formData?.jobTitle}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Phone Number:</label>
+            <span>{{formData?.formData?.phoneNumber}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>Email:</label>
+            <span>{{formData?.formData?.email}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-item">
+            <label>How did you hear about us:</label>
+            <span>{{formData?.formData?.hearAboutUs}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

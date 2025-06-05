@@ -17,15 +17,15 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: []
   },
-   {
-    path: '/form/e2e-qa-resources',
-    title: 'E2E QA Resource',
-    icon: 'bi bi-speedometer2',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-   {
+  // {
+  //   path: '/form/e2e-qa-resources',
+  //   title: 'E2E QA Resource',
+  //   icon: 'bi bi-speedometer2',
+  //   class: '',
+  //   extralink: false,
+  //   submenu: []
+  // },
+  {
     path: '/form/it-subcontract',
     title: 'IT SubContract',
     icon: 'bi bi-speedometer2',
@@ -33,15 +33,15 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: []
   },
-   {
-    path: '/form/it-subcontract-deck',
-    title: 'IT SubContracting Deck',
-    icon: 'bi bi-speedometer2',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
-   {
+  //  {
+  //   path: '/form/it-subcontract-deck',
+  //   title: 'IT SubContracting Deck',
+  //   icon: 'bi bi-speedometer2',
+  //   class: '',
+  //   extralink: false,
+  //   submenu: []
+  // },
+  {
     path: '/form/contact-us',
     title: 'Contact Us',
     icon: 'bi bi-speedometer2',
