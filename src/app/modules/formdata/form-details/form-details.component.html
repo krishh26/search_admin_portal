@@ -14,7 +14,7 @@
         </div>
         <div class="col-md-6">
           <div class="detail-item">
-            <label>Profession Type:</label>
+            <label>I Am a:</label>
             <span>{{formData?.formData?.professionType}}</span>
           </div>
         </div>
@@ -111,6 +111,15 @@
             <span>{{formData?.formData?.completedTimestamp | date:'medium'}}</span>
           </div>
         </div>
+         <div class="col-md-6">
+          <div class="detail-item">
+            <label>Enquiry Document :</label>
+            <span>
+              <button *ngIf="formData?.formData?.fileUpload" class="btn btn-sm btn-primary" type="button" (click)="openInNewTab(formData?.formData?.fileUpload?.url)">Download</button>
+              <p *ngIf="!formData?.formData?.fileUpload">Not uploaded.</p>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -119,13 +128,13 @@
       <div class="row">
         <div class="col-md-6">
           <div class="detail-item">
-            <label>Profession Type:</label>
+            <label>I Am a:</label>
             <span>{{formData?.formData?.professionType}}</span>
           </div>
         </div>
         <div class="col-md-6">
           <div class="detail-item">
-            <label>Registration Type:</label>
+            <label>I am registering for:</label>
             <span>{{formData?.formData?.registrationType}}</span>
           </div>
         </div>
@@ -134,7 +143,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="detail-item">
-            <label>White Label Option:</label>
+            <label>I would like to discuss white labelling options:</label>
             <span>{{formData?.formData?.whiteLabelOption ? 'Yes' : 'No'}}</span>
           </div>
         </div>
@@ -326,13 +335,13 @@
       <div class="row">
         <div class="col-md-6">
           <div class="detail-item">
-            <label>Profession Type:</label>
+            <label>I Am a:</label>
             <span>{{formData?.formData?.professionType}}</span>
           </div>
         </div>
         <div class="col-md-6">
           <div class="detail-item">
-            <label>Registration Type:</label>
+            <label>I am registering for:</label>
             <span>{{formData?.formData?.registrationType}}</span>
           </div>
         </div>
@@ -341,13 +350,13 @@
       <div class="row">
         <div class="col-md-6">
           <div class="detail-item">
-            <label>White Label Option:</label>
+            <label>I would like to discuss white labelling options:</label>
             <span>{{formData?.formData?.whiteLabelOption ? 'Yes' : 'No'}}</span>
           </div>
         </div>
         <div class="col-md-6">
           <div class="detail-item">
-            <label>Demand Ready:</label>
+            <label>Have the demand ready?:</label>
             <span>{{formData?.formData?.hasDemandReady}}</span>
           </div>
         </div>

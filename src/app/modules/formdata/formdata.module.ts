@@ -8,6 +8,8 @@ import { ItSubcontractComponent } from './it-subcontract/it-subcontract.componen
 import { ItSubcontractDeckComponent } from './it-subcontract-deck/it-subcontract-deck.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FormDetailsComponent } from './form-details/form-details.component';
+import { SearchComponent } from './search/search.component';
+import { UserSearchDetailsComponent } from './user-search-details/user-search-details.component';
 
 const routes: Routes = [
   {
@@ -59,8 +61,20 @@ const routes: Routes = [
     component: ContactUsComponent,
   },
   {
+    path: "search",
+    data: {
+      title: "Search",
+      urls: [{ title: "Search", url: "/form/search" }, { title: "Search" }],
+    },
+    component: SearchComponent,
+  },
+  {
     path: "details/:id",
     component: FormDetailsComponent,
+  },
+  {
+    path: "search/:id",
+    component: UserSearchDetailsComponent,
   },
 ];
 
@@ -73,7 +87,9 @@ const routes: Routes = [
     ItSubcontractComponent,
     ItSubcontractDeckComponent,
     ContactUsComponent,
-    FormDetailsComponent
+    FormDetailsComponent,
+    SearchComponent,
+    UserSearchDetailsComponent
   ],
   imports: [
     CommonModule,

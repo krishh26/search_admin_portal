@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-4 mb-4" *ngFor="let item of formData">
+    <div class="card h-100 shadow rounded-3 border" [ngClass]="{ 'border-success': item.type === 'IT Subcontracting', 'border-primary': item.type === 'WorkAway' }">
+      <div class="card-body">
+
+        <!-- IT Subcontracting Card -->
+        <ng-container *ngIf="item.type === 'IT Subcontracting'">
+          <h5 class="card-title text-success">
+            {{ item.projectName || item.expertise || item.tags || 'No Title' }}
+          </h5>
+          <ul class="list-unstyled">
+            <li *ngIf="item.projectName"><strong>Project:</strong> {{ item.projectName }}</li>
+            <li *ngIf="item.expertise"><strong>Expertise:</strong> {{ item.expertise }}</li>
+            <li *ngIf="item.tags"><strong>Tags:</strong> {{ item.tags }}</li>
+            <li *ngIf="item.supplierCount != null"><strong>Supplier Count:</strong> {{ item.supplierCount }}</li>
+            <!-- <li *ngIf="item.createdAt"><strong>Created:</strong> {{ item.createdAt | date: 'medium' }}</li> -->
+          </ul>
+        </ng-container>
+
+        <!-- WorkAway Card -->
+        <ng-container *ngIf="item.type === 'WorkAway'">
+          <h5 class="card-title text-primary">
+            {{ item.jobTitle || 'No Title' }}
+          </h5>
+          <ul class="list-unstyled">
+            <li *ngIf="item.jobTitle"><strong>Job Title:</strong> {{ item.jobTitle }}</li>
+            <!-- <li *ngIf="item.minExperience != null && item.maxExperience != null">
+              <strong>Experience:</strong> {{ item.minExperience }} - {{ item.maxExperience }} years
+            </li> -->
+            <li *ngIf="item.candidateCount != null"><strong>Candidate Count:</strong> {{ item.candidateCount }}</li>
+            <!-- <li *ngIf="item.createdAt"><strong>Created:</strong> {{ item.createdAt | date: 'medium' }}</li> -->
+          </ul>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
