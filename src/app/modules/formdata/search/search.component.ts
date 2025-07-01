@@ -32,7 +32,6 @@ export class SearchComponent {
   }
 
   getDataSupplier() {
-    this.data = [];
     this.formdataService.getSupplierSearchUser().subscribe((response) => {
       if (response?.success) {
         const data = response?.data || [];
