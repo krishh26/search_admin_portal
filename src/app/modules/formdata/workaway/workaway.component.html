@@ -1,3 +1,15 @@
+<div class="row mb-3">
+    <div class="col-12 d-flex justify-content-end">
+        <select class="form-select w-auto" [(ngModel)]="selectedFormType" (change)="onFormTypeChange($event)">
+            <option value="">All</option>
+            <option value="e2eQaResourceForm">e2eQaResourceForm</option>
+            <option value="e2eQaServiceForm">e2eQaServiceForm</option>
+            <option value="itSubcontractForm">itSubcontractForm</option>
+            <option value="itSubcontractingDeckForm">itSubcontractingDeckForm</option>
+            <option value="workAwayForm">workAwayForm</option>
+        </select>
+    </div>
+</div>
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -23,13 +35,14 @@
                                 <td> {{ i + 1 }} </td>
                                 <td> {{tr?.formData?.fullName}} </td>
                                 <td> {{tr?.formData?.phoneNumber}} </td>
-                                <td> {{tr?.formData?.emailAddress}} </td>
+                                <td> {{tr?.formData?.emailAddress || tr?.formData?.email}} </td>
                                 <td> {{tr?.formData?.serviceType}} </td>
                                 <td> {{tr?.formData?.professionType}} </td>
                                 <td> {{tr?.formData?.jobTitle}} </td>
                                 <!-- <td> {{tr?.formData?.businessName}} </td> -->
                                 <td>
-                                    <button type="button" (click)="redirectToDetailsPage(tr?._id)" class="btn btn-primary text-light m-1"> View </button>
+                                    <button type="button" (click)="redirectToDetailsPage(tr?.formData?.emailAddress || tr?.formData?.email)"
+                                        class="btn btn-primary text-light m-1"> View </button>
                                     <!-- <button type="button" class="btn btn-danger text-light m-1"> Delete </button> -->
                                 </td>
                             </tr>

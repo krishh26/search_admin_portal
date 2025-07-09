@@ -1,475 +1,507 @@
 <div class="form-details-container">
-  <div class="card">
-    <div class="card-header">
-      <h2>Details</h2>
-    </div>
-    <!-- WorkAway -->
-    <div *ngIf="formData?.formType == 'workAwayForm'" class="card-body">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Service Type:</label>
-            <span>{{formData?.formData?.serviceType}}</span>
-          </div>
+  <div class="accordion" id="formTypeAccordion">
+    <div *ngFor="let type of formTypes">
+      <div class="card mb-2">
+        <div class="card-header d-flex justify-content-between align-items-center" (click)="loadFormType(type.key)"
+          style="cursor:pointer;">
+          <h5 class="mb-0">{{ type.label }}</h5>
+          <span *ngIf="openSection === type.key">&#9660;</span>
+          <span *ngIf="openSection !== type.key">&#9654;</span>
         </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>I Am a:</label>
-            <span>{{formData?.formData?.professionType}}</span>
+        <div [hidden]="openSection !== type.key">
+          <!-- <div *ngIf="submissionsByType[type.key].length > 0; else noData"> -->
+          <div *ngFor="let formData of submissionsByType[type.key]; let i = index" class="card-body border-bottom"
+            [ngClass]="{'mb-3': i < submissionsByType[type.key].length - 1}">
+            <!-- Existing detail UI for each form type, using formData as context -->
+            <ng-container [ngSwitch]="type.key">
+              <!-- WorkAway -->
+              <div *ngSwitchCase="'workAwayForm'">
+                <!-- ... copy the workAwayForm detail UI here, replacing all formData?.formData with formData.formData ... -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Service Type:</label>
+                      <span>{{formData.formData?.serviceType}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>I Am a:</label>
+                      <span>{{formData.formData?.professionType}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Business Name:</label>
+                      <span>{{formData.formData?.businessName}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Banking Option:</label>
+                      <span>{{formData.formData?.bankingOption}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="detail-item">
+                      <label>Address:</label>
+                      <span>{{formData.formData?.address}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>White Label Option:</label>
+                      <span>{{formData.formData?.whiteLabelOption ? 'Yes' : 'No'}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Demand Ready:</label>
+                      <span>{{formData.formData?.hasDemandReady ? 'Yes' : 'No'}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Full Name:</label>
+                      <span>{{formData.formData?.fullName}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Job Title:</label>
+                      <span>{{formData.formData?.jobTitle}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Phone Number:</label>
+                      <span>{{formData.formData?.phoneNumber}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Email Address:</label>
+                      <span>{{formData.formData?.emailAddress}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>How did you hear about us:</label>
+                      <span>{{formData.formData?.howDidYouHear}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Step One Timestamp:</label>
+                      <span>{{formData.formData?.stepOneTimestamp | date:'medium'}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Completed Timestamp:</label>
+                      <span>{{formData.formData?.completedTimestamp | date:'medium'}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Enquiry Document :</label>
+                      <span>
+                        <button *ngIf="formData.formData?.fileUpload" class="btn btn-sm btn-primary" type="button"
+                          (click)="openInNewTab(formData.formData?.fileUpload?.url)">Download</button>
+                        <p *ngIf="!formData.formData?.fileUpload">Not uploaded.</p>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- IT SubContract -->
+              <div *ngSwitchCase="'itSubcontractForm'">
+                <!-- ... copy the itSubcontractForm detail UI here, replacing all formData?.formData with formData.formData ... -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>I Am a:</label>
+                      <span>{{formData.formData?.professionType}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>I am registering for:</label>
+                      <span>{{formData.formData?.registrationType}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>I would like to discuss white labelling options:</label>
+                      <span>{{formData.formData?.whiteLabelOption ? 'Yes' : 'No'}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Demand Ready:</label>
+                      <span>{{formData.formData?.hasDemandReady}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Requirement:</label>
+                      <span>{{formData.formData?.requirement}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Engagement Type:</label>
+                      <span>{{formData.formData?.engagementType}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="detail-item">
+                      <label>Description:</label>
+                      <span>{{formData.formData?.description}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Language:</label>
+                      <span>{{formData.formData?.language}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Budget:</label>
+                      <span>{{formData.formData?.budget}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Start Date:</label>
+                      <span>{{formData.formData?.startDate | date:'medium'}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>End Date:</label>
+                      <span>{{formData.formData?.endDate | date:'medium'}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Business Name:</label>
+                      <span>{{formData.formData?.businessName}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Address:</label>
+                      <span>{{formData.formData?.address}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Full Name:</label>
+                      <span>{{formData.formData?.fullName}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Job Title:</label>
+                      <span>{{formData.formData?.jobTitle}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Phone Number:</label>
+                      <span>{{formData.formData?.phoneNumber}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Email:</label>
+                      <span>{{formData.formData?.email}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>How did you hear about us:</label>
+                      <span>{{formData.formData?.hearAboutUs}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- E2E QA Service -->
+              <div *ngSwitchCase="'e2eQaServiceForm'">
+                <!-- ... copy the e2eQaServiceForm detail UI here, replacing all formData?.formData with formData.formData ... -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>I Am a:</label>
+                      <span>{{formData.formData?.professionType}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>I am registering for:</label>
+                      <span>{{formData.formData?.registrationType}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>I would like to discuss white labelling options:</label>
+                      <span>{{formData.formData?.whiteLabelOption ? 'Yes' : 'No'}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Have the demand ready?:</label>
+                      <span>{{formData.formData?.hasDemandReady}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Requirement:</label>
+                      <span>{{formData.formData?.requirement}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Engagement Type:</label>
+                      <span>{{formData.formData?.engagementType}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="detail-item">
+                      <label>Description:</label>
+                      <span>{{formData.formData?.description}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Language:</label>
+                      <span>{{formData.formData?.language}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Budget:</label>
+                      <span>{{formData.formData?.budget}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Start Date:</label>
+                      <span>{{formData.formData?.startDate | date:'medium'}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>End Date:</label>
+                      <span>{{formData.formData?.endDate | date:'medium'}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Business Name:</label>
+                      <span>{{formData.formData?.businessName}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Address:</label>
+                      <span>{{formData.formData?.address}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Full Name:</label>
+                      <span>{{formData.formData?.fullName}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Job Title:</label>
+                      <span>{{formData.formData?.jobTitle}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Phone Number:</label>
+                      <span>{{formData.formData?.phoneNumber}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Email:</label>
+                      <span>{{formData.formData?.email}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>How did you hear about us:</label>
+                      <span>{{formData.formData?.hearAboutUs}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Contact Us -->
+              <div *ngSwitchCase="'contactUsForm'">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Name:</label>
+                      <span>{{formData.formData?.name}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Email:</label>
+                      <span>{{formData.formData?.email}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Mobile Number:</label>
+                      <span>{{formData.formData?.mobileNumber}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Company Name:</label>
+                      <span>{{formData.formData?.companyName}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Website URL:</label>
+                      <span>{{formData.formData?.websiteUrl}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Role:</label>
+                      <span>{{formData.formData?.role}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-item">
+                      <label>Reason for Contact:</label>
+                      <span>{{formData.formData?.reasonForContact}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="detail-item">
+                      <label>Message:</label>
+                      <span>{{formData.formData?.message}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- E2E QA Resource, IT Subcontracting Deck: You can add similar blocks for these types as needed -->
+            </ng-container>
           </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Business Name:</label>
-            <span>{{formData?.formData?.businessName}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Banking Option:</label>
-            <span>{{formData?.formData?.bankingOption}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="detail-item">
-            <label>Address:</label>
-            <span>{{formData?.formData?.address}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>White Label Option:</label>
-            <span>{{formData?.formData?.whiteLabelOption ? 'Yes' : 'No'}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Demand Ready:</label>
-            <span>{{formData?.formData?.hasDemandReady ? 'Yes' : 'No'}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Full Name:</label>
-            <span>{{formData?.formData?.fullName}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Job Title:</label>
-            <span>{{formData?.formData?.jobTitle}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Phone Number:</label>
-            <span>{{formData?.formData?.phoneNumber}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Email Address:</label>
-            <span>{{formData?.formData?.emailAddress}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>How did you hear about us:</label>
-            <span>{{formData?.formData?.howDidYouHear}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Step One Timestamp:</label>
-            <span>{{formData?.formData?.stepOneTimestamp | date:'medium'}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Completed Timestamp:</label>
-            <span>{{formData?.formData?.completedTimestamp | date:'medium'}}</span>
-          </div>
-        </div>
-         <div class="col-md-6">
-          <div class="detail-item">
-            <label>Enquiry Document :</label>
-            <span>
-              <button *ngIf="formData?.formData?.fileUpload" class="btn btn-sm btn-primary" type="button" (click)="openInNewTab(formData?.formData?.fileUpload?.url)">Download</button>
-              <p *ngIf="!formData?.formData?.fileUpload">Not uploaded.</p>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- IT SubContract -->
-    <div *ngIf="formData?.formType == 'itSubcontractForm'" class="card-body">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>I Am a:</label>
-            <span>{{formData?.formData?.professionType}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>I am registering for:</label>
-            <span>{{formData?.formData?.registrationType}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>I would like to discuss white labelling options:</label>
-            <span>{{formData?.formData?.whiteLabelOption ? 'Yes' : 'No'}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Demand Ready:</label>
-            <span>{{formData?.formData?.hasDemandReady}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Requirement:</label>
-            <span>{{formData?.formData?.requirement}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Engagement Type:</label>
-            <span>{{formData?.formData?.engagementType}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="detail-item">
-            <label>Description:</label>
-            <span>{{formData?.formData?.description}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Language:</label>
-            <span>{{formData?.formData?.language}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Budget:</label>
-            <span>{{formData?.formData?.budget}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Start Date:</label>
-            <span>{{formData?.formData?.startDate | date:'medium'}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>End Date:</label>
-            <span>{{formData?.formData?.endDate | date:'medium'}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Business Name:</label>
-            <span>{{formData?.formData?.businessName}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Address:</label>
-            <span>{{formData?.formData?.address}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Full Name:</label>
-            <span>{{formData?.formData?.fullName}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Job Title:</label>
-            <span>{{formData?.formData?.jobTitle}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Phone Number:</label>
-            <span>{{formData?.formData?.phoneNumber}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Email:</label>
-            <span>{{formData?.formData?.email}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>How did you hear about us:</label>
-            <span>{{formData?.formData?.hearAboutUs}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Contact Us -->
-    <div *ngIf="formData?.formType == 'contactUsForm'" class="card-body">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Name:</label>
-            <span>{{formData?.formData?.name}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Email:</label>
-            <span>{{formData?.formData?.email}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Mobile Number:</label>
-            <span>{{formData?.formData?.mobileNumber}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Company Name:</label>
-            <span>{{formData?.formData?.companyName}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Website URL:</label>
-            <span>{{formData?.formData?.websiteUrl}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Role:</label>
-            <span>{{formData?.formData?.role}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Reason for Contact:</label>
-            <span>{{formData?.formData?.reasonForContact}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="detail-item">
-            <label>Message:</label>
-            <span>{{formData?.formData?.message}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- E2E QA Service -->
-    <div *ngIf="formData?.formType == 'e2eQaServiceForm'" class="card-body">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>I Am a:</label>
-            <span>{{formData?.formData?.professionType}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>I am registering for:</label>
-            <span>{{formData?.formData?.registrationType}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>I would like to discuss white labelling options:</label>
-            <span>{{formData?.formData?.whiteLabelOption ? 'Yes' : 'No'}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Have the demand ready?:</label>
-            <span>{{formData?.formData?.hasDemandReady}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Requirement:</label>
-            <span>{{formData?.formData?.requirement}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Engagement Type:</label>
-            <span>{{formData?.formData?.engagementType}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="detail-item">
-            <label>Description:</label>
-            <span>{{formData?.formData?.description}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Language:</label>
-            <span>{{formData?.formData?.language}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Budget:</label>
-            <span>{{formData?.formData?.budget}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Start Date:</label>
-            <span>{{formData?.formData?.startDate | date:'medium'}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>End Date:</label>
-            <span>{{formData?.formData?.endDate | date:'medium'}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Business Name:</label>
-            <span>{{formData?.formData?.businessName}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Address:</label>
-            <span>{{formData?.formData?.address}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Full Name:</label>
-            <span>{{formData?.formData?.fullName}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Job Title:</label>
-            <span>{{formData?.formData?.jobTitle}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Phone Number:</label>
-            <span>{{formData?.formData?.phoneNumber}}</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>Email:</label>
-            <span>{{formData?.formData?.email}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-item">
-            <label>How did you hear about us:</label>
-            <span>{{formData?.formData?.hearAboutUs}}</span>
-          </div>
+          <!-- </div> -->
+          <ng-template #noData>
+            <div class="card-body">
+              <p>No data available for this form type.</p>
+            </div>
+          </ng-template>
         </div>
       </div>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let item of formData">
+      <div class="card h-100 shadow rounded-3 border"
+        [ngClass]="{ 'border-success': item.type === 'IT Subcontracting', 'border-primary': item.type === 'WorkAway' }">
+        <div class="card-body">
 
+          <!-- IT Subcontracting Card -->
+          <ng-container *ngIf="item.type === 'IT Subcontracting'">
+            <h5 class="card-title text-success">
+              {{ item.projectName || item.expertise || item.tags || 'No Title' }}
+            </h5>
+            <ul class="list-unstyled">
+              <li *ngIf="item.projectName"><strong>Project:</strong> {{ item.projectName }}</li>
+              <li *ngIf="item.expertise"><strong>Expertise:</strong> {{ item.expertise }}</li>
+              <li *ngIf="item.tags"><strong>Tags:</strong> {{ item.tags }}</li>
+              <li *ngIf="item.supplierCount != null"><strong>Supplier Count:</strong> {{ item.supplierCount }}</li>
+              <!-- <li *ngIf="item.createdAt"><strong>Created:</strong> {{ item.createdAt | date: 'medium' }}</li> -->
+            </ul>
+          </ng-container>
+
+          <!-- WorkAway Card -->
+          <ng-container *ngIf="item.type === 'WorkAway'">
+            <h5 class="card-title text-primary">
+              {{ item.jobTitle || 'No Title' }}
+            </h5>
+            <ul class="list-unstyled">
+              <li *ngIf="item.jobTitle"><strong>Job Title:</strong> {{ item.jobTitle }}</li>
+              <!-- <li *ngIf="item.minExperience != null && item.maxExperience != null">
+                  <strong>Experience:</strong> {{ item.minExperience }} - {{ item.maxExperience }} years
+                </li> -->
+              <li *ngIf="item.candidateCount != null"><strong>Candidate Count:</strong> {{ item.candidateCount }}</li>
+              <!-- <li *ngIf="item.createdAt"><strong>Created:</strong> {{ item.createdAt | date: 'medium' }}</li> -->
+            </ul>
+          </ng-container>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

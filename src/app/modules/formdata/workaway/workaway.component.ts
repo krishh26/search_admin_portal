@@ -9,6 +9,7 @@ import { FormdataService } from 'src/app/services/formdata.service';
 })
 export class WorkawayComponent implements OnInit {
   data: any[] = [];
+  selectedFormType: string = '';
 
   constructor(
     private formdataService: FormdataService,
@@ -16,18 +17,22 @@ export class WorkawayComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getData();
+    this.getData(this.selectedFormType);
   }
 
-  getData() {
+  getData(formType: string) {
     this.data = [];
-    this.formdataService.getFormData('workAwayForm').subscribe((response) => {
+    this.formdataService.getFormData(formType).subscribe((response) => {
       if (response?.status) {
         this.data = response?.data?.data;
       } else {
         this.data = [];
       }
     });
+  }
+
+  onFormTypeChange(formType: any) {
+    this.getData(formType?.target.value);
   }
 
   redirectToDetailsPage(id: string) {

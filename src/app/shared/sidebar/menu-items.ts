@@ -3,20 +3,20 @@ import { RouteInfo } from './sidebar.metadata';
 export const ROUTES: RouteInfo[] = [
   {
     path: '/form/workaway',
-    title: 'WorkAway Registration',
+    title: 'Registration Forms',
     icon: 'bi bi-speedometer2',
     class: '',
     extralink: false,
     submenu: []
   },
-  {
-    path: '/form/e2e-qa-sevice',
-    title: 'E2E QA Service',
-    icon: 'bi bi-speedometer2',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
+  // {
+  //   path: '/form/e2e-qa-sevice',
+  //   title: 'E2E QA Service',
+  //   icon: 'bi bi-speedometer2',
+  //   class: '',
+  //   extralink: false,
+  //   submenu: []
+  // },
   // {
   //   path: '/form/e2e-qa-resources',
   //   title: 'E2E QA Resource',
@@ -25,14 +25,14 @@ export const ROUTES: RouteInfo[] = [
   //   extralink: false,
   //   submenu: []
   // },
-  {
-    path: '/form/it-subcontract',
-    title: 'IT SubContract',
-    icon: 'bi bi-speedometer2',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
+  // {
+  //   path: '/form/it-subcontract',
+  //   title: 'IT SubContract',
+  //   icon: 'bi bi-speedometer2',
+  //   class: '',
+  //   extralink: false,
+  //   submenu: []
+  // },
   //  {
   //   path: '/form/it-subcontract-deck',
   //   title: 'IT SubContracting Deck',
@@ -48,7 +48,7 @@ export const ROUTES: RouteInfo[] = [
     class: '',
     extralink: false,
     submenu: []
-  },  
+  },
   {
     path: '/form/search',
     title: 'Search',

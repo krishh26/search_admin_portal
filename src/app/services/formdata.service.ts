@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 
 export enum APIEndPoint {
   GET_DATA = '/search-ui/formdata',
+  GET_DATA_BY_EMAIL = "/search-ui/formdata/details",
   CANDIDATE_SEARCH_USER = '/candidate/public/anonymous-users',
   CANDIDATE_SEARCH_SUPPLIER_USER = '/user/public/supplier-filter/anonymous-users',
 }
@@ -31,6 +32,7 @@ export class FormdataService {
     if (formType) {
       params['formType'] = formType
     }
+    params['limit'] = 10000000
 
     return this.httpClient
       .get<any>(this.baseUrl + APIEndPoint.GET_DATA, {
@@ -41,6 +43,20 @@ export class FormdataService {
   getFormDetails(id: string): Observable<any> {
     return this.httpClient
       .get<any>(this.baseUrl + APIEndPoint.GET_DATA + '/' + id);
+  }
+
+  getFormDetailsByEmail(data: any): Observable<any> {
+    const params: any = {};
+
+    if (data?.email) {
+      params['email'] = data?.email
+    }
+    if (data?.formType) {
+      params['formType'] = data?.formType
+    }
+
+    return this.httpClient
+      .get<any>(this.baseUrl + APIEndPoint.GET_DATA_BY_EMAIL, { params: params });
   }
 
   getCandidateSearchUser(): Observable<any> {
