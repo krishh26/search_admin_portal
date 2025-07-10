@@ -10,6 +10,7 @@ import { FormdataService } from 'src/app/services/formdata.service';
 export class WorkawayComponent implements OnInit {
   data: any[] = [];
   selectedFormType: string = '';
+  selectedStatus: string = 'new';
 
   constructor(
     private formdataService: FormdataService,
@@ -22,9 +23,22 @@ export class WorkawayComponent implements OnInit {
 
   getData(formType: string) {
     this.data = [];
+    // Add status filter to the existing API call
+    const params: any = { formType };
+    if (this.selectedStatus) {
+      params.status = this.selectedStatus;
+    }
+    
     this.formdataService.getFormData(formType).subscribe((response) => {
       if (response?.status) {
-        this.data = response?.data?.data;
+        // Filter data by status if status is selected
+        let filteredData = response?.data?.data;
+        if (this.selectedStatus && this.selectedStatus !== '') {
+          filteredData = filteredData.filter((item: any) => 
+            item.status && item.status.toLowerCase() === this.selectedStatus.toLowerCase()
+          );
+        }
+        this.data = filteredData || [];
       } else {
         this.data = [];
       }
@@ -33,6 +47,11 @@ export class WorkawayComponent implements OnInit {
 
   onFormTypeChange(formType: any) {
     this.getData(formType?.target.value);
+  }
+
+  onStatusTabChange(status: string) {
+    this.selectedStatus = status;
+    this.getData(this.selectedFormType);
   }
 
   redirectToDetailsPage(id: string) {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkawayComponent } from './workaway/workaway.component';
 import { RouterModule, Routes } from '@angular/router';
 import { E2eQaSeviceComponent } from './e2e-qa-sevice/e2e-qa-sevice.component';
@@ -95,6 +95,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
   ]
 })

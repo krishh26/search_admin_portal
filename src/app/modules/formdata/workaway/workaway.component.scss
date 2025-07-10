@@ -1,0 +1,118 @@
+// Status Tabs Styling
+.nav-tabs {
+  border-bottom: 2px solid #e9ecef;
+  
+  .nav-item {
+    margin-bottom: -2px;
+    
+    .nav-link {
+      border: none;
+      border-bottom: 3px solid transparent;
+      border-radius: 0;
+      padding: 12px 20px;
+      font-weight: 600;
+      color: #6c757d;
+      transition: all 0.3s ease;
+      position: relative;
+      
+      &:hover {
+        border-color: transparent;
+        color: #495057;
+        background-color: #f8f9fa;
+      }
+      
+      &.active {
+        color: #007bff;
+        border-bottom-color: #007bff;
+        background-color: transparent;
+        
+        i {
+          opacity: 1;
+        }
+      }
+      
+      i {
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+      }
+    }
+  }
+}
+
+// Status-specific tab colors
+#new-tab {
+  &.active {
+    color: #007bff !important;
+    border-bottom-color: #007bff !important;
+  }
+}
+
+#inprogress-tab {
+  &.active {
+    color: #ffc107 !important;
+    border-bottom-color: #ffc107 !important;
+  }
+}
+
+#converted-tab {
+  &.active {
+    color: #28a745 !important;
+    border-bottom-color: #28a745 !important;
+  }
+}
+
+#dropped-tab {
+  &.active {
+    color: #dc3545 !important;
+    border-bottom-color: #dc3545 !important;
+  }
+}
+
+// Tab content styling
+.tab-content {
+  .tab-pane {
+    animation: fadeIn 0.3s ease;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Card title styling
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+  &::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border-radius: 2px;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .nav-tabs {
+    .nav-item {
+      .nav-link {
+        padding: 8px 12px;
+        font-size: 14px;
+        
+        i {
+          margin-right: 4px !important;
+        }
+      }
+    }
+  }
+}

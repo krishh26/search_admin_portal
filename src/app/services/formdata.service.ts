@@ -10,6 +10,7 @@ export enum APIEndPoint {
   GET_DATA_BY_EMAIL = "/search-ui/formdata/details",
   CANDIDATE_SEARCH_USER = '/candidate/public/anonymous-users',
   CANDIDATE_SEARCH_SUPPLIER_USER = '/user/public/supplier-filter/anonymous-users',
+  UPDATE_STATUS = '/search-ui/formdata',
 }
 
 @Injectable({
@@ -83,5 +84,12 @@ export class FormdataService {
       params = new HttpParams().set('anonymousUserId', id);
     }
     return this.httpClient.get(`${this.baseUrl}/candidate/public/filter-list`, { params });
+  }
+
+  updateSubmissionStatus(submissionId: string, payload: any): Observable<any> {
+    return this.httpClient.patch<any>(
+      `${this.baseUrl}${APIEndPoint.UPDATE_STATUS}/${submissionId}/status`,
+      payload
+    );
   }
 }

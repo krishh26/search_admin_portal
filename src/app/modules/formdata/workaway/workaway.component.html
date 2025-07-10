@@ -1,53 +1,91 @@
 <div class="row mb-3">
-    <div class="col-12 d-flex justify-content-end">
-        <select class="form-select w-auto" [(ngModel)]="selectedFormType" (change)="onFormTypeChange($event)">
-            <option value="">All</option>
-            <option value="e2eQaResourceForm">e2eQaResourceForm</option>
-            <option value="e2eQaServiceForm">e2eQaServiceForm</option>
-            <option value="itSubcontractForm">itSubcontractForm</option>
-            <option value="itSubcontractingDeckForm">itSubcontractingDeckForm</option>
-            <option value="workAwayForm">workAwayForm</option>
-        </select>
-    </div>
-</div>
-<div class="row">
     <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Work Away</h4>
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle text-nowrap table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th class="text-dark font-medium fs-4">#</th>
-                                <th class="text-dark font-medium fs-4">Name</th>
-                                <th class="text-dark font-medium fs-4">Phone Number</th>
-                                <th class="text-dark font-medium fs-4">Email</th>
-                                <th class="text-dark font-medium fs-4">Service Type</th>
-                                <th class="text-dark font-medium fs-4">Profession Type</th>
-                                <th class="text-dark font-medium fs-4">Job Title</th>
-                                <!-- <th class="text-dark font-medium fs-4">Business Name</th> -->
-                                <th class="text-dark font-medium fs-4">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor='let tr of data; index as i'>
-                                <td> {{ i + 1 }} </td>
-                                <td> {{tr?.formData?.fullName}} </td>
-                                <td> {{tr?.formData?.phoneNumber}} </td>
-                                <td> {{tr?.formData?.emailAddress || tr?.formData?.email}} </td>
-                                <td> {{tr?.formData?.serviceType}} </td>
-                                <td> {{tr?.formData?.professionType}} </td>
-                                <td> {{tr?.formData?.jobTitle}} </td>
-                                <!-- <td> {{tr?.formData?.businessName}} </td> -->
-                                <td>
-                                    <button type="button" (click)="redirectToDetailsPage(tr?.formData?.emailAddress || tr?.formData?.email)"
-                                        class="btn btn-primary text-light m-1"> View </button>
-                                    <!-- <button type="button" class="btn btn-danger text-light m-1"> Delete </button> -->
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <!-- Status Tabs -->
+        <ul class="nav nav-tabs mb-3" id="statusTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="new-tab" data-bs-toggle="tab" data-bs-target="#new" type="button" role="tab" 
+                        (click)="onStatusTabChange('new')" [class.active]="selectedStatus === 'new'">
+                    <i class="fas fa-circle text-primary me-2"></i>
+                    New
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="inprogress-tab" data-bs-toggle="tab" data-bs-target="#inprogress" type="button" role="tab" 
+                        (click)="onStatusTabChange('inprogress')" [class.active]="selectedStatus === 'inprogress'">
+                    <i class="fas fa-clock text-warning me-2"></i>
+                    Inprogress
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="converted-tab" data-bs-toggle="tab" data-bs-target="#converted" type="button" role="tab" 
+                        (click)="onStatusTabChange('converted')" [class.active]="selectedStatus === 'converted'">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    Converted
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="dropped-tab" data-bs-toggle="tab" data-bs-target="#dropped" type="button" role="tab" 
+                        (click)="onStatusTabChange('dropped')" [class.active]="selectedStatus === 'dropped'">
+                    <i class="fas fa-times-circle text-danger me-2"></i>
+                    Dropped
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="statusTabContent">
+            <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
+                <div class="row mb-3">
+                    <div class="col-12 d-flex justify-content-end">
+                        <select class="form-select w-auto" [(ngModel)]="selectedFormType" (change)="onFormTypeChange($event)">
+                            <option value="">All</option>
+                            <option value="e2eQaResourceForm">e2eQaResourceForm</option>
+                            <option value="e2eQaServiceForm">e2eQaServiceForm</option>
+                            <option value="itSubcontractForm">itSubcontractForm</option>
+                            <option value="itSubcontractingDeckForm">itSubcontractingDeckForm</option>
+                            <option value="workAwayForm">workAwayForm</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- <h4 class="card-title">Work Away - New Status</h4> -->
+                                <div class="table-responsive">
+                                    <table class="table table-hover align-middle text-nowrap table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-dark font-medium fs-4">#</th>
+                                                <th class="text-dark font-medium fs-4">Name</th>
+                                                <th class="text-dark font-medium fs-4">Phone Number</th>
+                                                <th class="text-dark font-medium fs-4">Email</th>
+                                                <th class="text-dark font-medium fs-4">Service Type</th>
+                                                <th class="text-dark font-medium fs-4">Profession Type</th>
+                                                <th class="text-dark font-medium fs-4">Job Title</th>
+                                                <th class="text-dark font-medium fs-4">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor='let tr of data; index as i'>
+                                                <td> {{ i + 1 }} </td>
+                                                <td> {{tr?.formData?.fullName}} </td>
+                                                <td> {{tr?.formData?.phoneNumber}} </td>
+                                                <td> {{tr?.formData?.emailAddress || tr?.formData?.email}} </td>
+                                                <td> {{tr?.formData?.serviceType}} </td>
+                                                <td> {{tr?.formData?.professionType}} </td>
+                                                <td> {{tr?.formData?.jobTitle}} </td>
+                                                <td>
+                                                    <button type="button" (click)="redirectToDetailsPage(tr?.formData?.emailAddress || tr?.formData?.email)"
+                                                        class="btn btn-primary text-light m-1"> View </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
